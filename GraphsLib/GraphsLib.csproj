@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DirectedGraph.cs" />
     <Compile Include="Edge.cs" />
+    <Compile Include="ExtensionsGraph.cs" />
     <Compile Include="ExtensionsNode.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Node.cs" />
