@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphsLib
 {
-    public class Graph
+    public abstract class Graph
     {
         private Node[] nodes;
         public Graph(int nodesCount)
@@ -25,5 +25,9 @@ namespace GraphsLib
                 foreach (var node in nodes) yield return node;
             }
         }
+
+        public abstract Edge Connect(int fromIndex, int toIndex);
+
+
     }
 }

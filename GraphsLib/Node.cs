@@ -13,13 +13,13 @@ namespace GraphsLib
         {
             NodeNumber = number;
         }
-        private readonly List<Edge> incidentEdges = new List<Edge>();
+        private readonly List<Edge> edges = new List<Edge>();
 
         public IEnumerable<Edge> IncidentEdges
         {
             get
             {
-                foreach (var edge in incidentEdges)
+                foreach (var edge in edges)
                     yield return edge;
             }
         }
@@ -28,9 +28,13 @@ namespace GraphsLib
         {
             get
             {
-                foreach (var edge in incidentEdges)
-                    yield return edge.To;
+                return edges.Select(z => z.OtherNode(this)).Where(z => z != null);
             }
+        }
+
+        public void Connect(Edge edge)
+        {
+            edges.Add(edge);
         }
 
         public override string ToString()
