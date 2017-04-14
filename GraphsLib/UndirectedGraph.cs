@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphsLib
 {
-    class UndirectedGraph : Graph
+    public class UndirectedGraph : Graph
     {
         public UndirectedGraph(int nodesCount) : base(nodesCount)
         {
