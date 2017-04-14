@@ -13,14 +13,17 @@ namespace GraphsLib
             var visited = new HashSet<Node>();
             var stack = new Stack<Node>();
             stack.Push(startNode);
+            visited.Add(startNode);
             while(stack.Count != 0)
             {
                 var node = stack.Pop();
-                if (visited.Contains(node)) continue;
-                visited.Add(node);
                 yield return node;
-                foreach (var incidentNode in node.IncidentNodes)
-                    stack.Push(incidentNode);
+                foreach (var nextNode in node.IncidentNodes.Where(z => !visited.Contains(z)))
+                {
+                    stack.Push(nextNode);
+                    visited.Add(nextNode);
+                }
+
             }
         }
 
@@ -29,14 +32,16 @@ namespace GraphsLib
             var visited = new HashSet<Node>();
             var queue = new Queue<Node>();
             queue.Enqueue(startNode);
+            visited.Add(startNode);
             while(queue.Count != 0)
             {
                 var node = queue.Dequeue();
-                if (visited.Contains(node)) continue;
-                visited.Add(node);
                 yield return node;
-                foreach (var incidentNode in node.IncidentNodes)
-                    queue.Enqueue(incidentNode);
+                foreach (var nextNode in node.IncidentNodes.Where(z => !visited.Contains(z)))
+                {
+                    queue.Enqueue(nextNode);
+                    visited.Add(nextNode);
+                }
             }
         }
 
